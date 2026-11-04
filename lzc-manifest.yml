@@ -1,0 +1,31 @@
+application:
+  subdomain: omnitools
+  multi_instance: false
+  # A page of browser-side utilities: there are no accounts and nothing to sign
+  # in to, so access stays behind the LazyCat entry.
+  upstreams:
+    - location: /
+      backend: http://omnitools:80/
+
+services:
+  omnitools:
+    # upstream: iib0011/omni-tools:0.7.0
+    image: docker.1ms.run/iib0011/omni-tools:0.7.0
+    environment:
+      - TZ=Asia/Shanghai
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1:80/ || exit 1"]
+      interval: 20s
+      timeout: 10s
+      retries: 10
+      start_period: 30s
+
+usage: |
+  万能工具箱（Omni Tools）把一堆常用小工具放在同一个页面里：格式转换、编码解码、
+  文本处理、数据生成、计算与格式化等等，全部在浏览器里本地完成。
+
+  - **纯前端工具集合，没有账号体系也没有后端数据**，
+    因此访问由懒猫入口负责鉴权，工具本身不保存你的任何输入。
+  - 因为转换都在浏览器本地进行，**敏感文本不会被上传到服务器**。
+  - 不需要数据库，也不需要持久化目录。
+  - 未做真机验证：各类工具的转换与生成结果、离线可用性均未在设备上实测。

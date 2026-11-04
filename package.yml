@@ -1,0 +1,18 @@
+package: community.lazycat.app.omnitools
+name: Omni Tools
+version: 0.0.0
+description: "A collection of handy browser tools in one self-hosted page: convert, encode, generate, format and calculate."
+min_os_version: "1.5.0"
+homepage: https://omnitools.app/
+author: iib0011
+license: MIT
+permissions:
+  required:
+    - net.internet
+locales:
+  zh:
+    name: 万能工具箱
+    description: "自托管的小工具合集：在一个页面里转换、编码、生成、格式化与计算，全部在浏览器本地完成。"
+  en:
+    name: Omni Tools
+    description: "A collection of handy browser tools in one self-hosted page: convert, encode, generate, format and calculate."
